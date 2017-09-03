@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="V0o-QA-Iz2">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Instamap-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="InstaMapViewController" id="BYZ-38-t0r" customClass="InstaMapViewController" customModule="MyMapBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rfo-W0-IdI">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Rfo-W0-IdI" secondAttribute="bottom" id="BDX-3s-bsI"/>
+                            <constraint firstAttribute="trailing" secondItem="Rfo-W0-IdI" secondAttribute="trailing" id="VB9-Kx-J7l"/>
+                            <constraint firstItem="Rfo-W0-IdI" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="f4z-8O-WV1"/>
+                            <constraint firstItem="Rfo-W0-IdI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="voX-A8-C8G"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Instamap" id="EwP-MD-Jqf"/>
+                    <connections>
+                        <outlet property="mapView" destination="Rfo-W0-IdI" id="JMx-Td-hSY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="992.79999999999995" y="160.56971514242881"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MdR-pB-7yG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="V0o-QA-Iz2" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zeQ-8h-t13">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="eJO-Uh-umj" kind="relationship" relationship="rootViewController" id="oPG-Gl-kU3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ktV-Mg-ofc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-452" y="161"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="JeI-Ow-Frg">
+            <objects>
+                <viewController id="eJO-Uh-umj" customClass="LoginViewController" customModule="MyMapBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pYB-Z3-TLd"/>
+                        <viewControllerLayoutGuide type="bottom" id="8kn-6j-Cyb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eOg-os-sbM">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="781-91-yQe">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="781-91-yQe" firstAttribute="top" secondItem="pYB-Z3-TLd" secondAttribute="bottom" id="6oo-Gr-r31"/>
+                            <constraint firstItem="781-91-yQe" firstAttribute="leading" secondItem="eOg-os-sbM" secondAttribute="leading" id="RKw-O9-7AX"/>
+                            <constraint firstAttribute="trailing" secondItem="781-91-yQe" secondAttribute="trailing" id="esa-pX-sCl"/>
+                            <constraint firstItem="8kn-6j-Cyb" firstAttribute="top" secondItem="781-91-yQe" secondAttribute="bottom" id="evl-mr-C1Q"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" title="Login" id="a2n-sf-haK"/>
+                    <connections>
+                        <outlet property="webView" destination="781-91-yQe" id="bll-Dz-8e8"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="showMapView" id="s3q-Z0-kwU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pKZ-FH-i99" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="266" y="161"/>
+        </scene>
+    </scenes>
+</document>
