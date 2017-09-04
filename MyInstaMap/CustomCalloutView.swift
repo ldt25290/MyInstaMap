@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CustomCalloutViewDelegate: class {
-    func btnShareClicked(photo: UIImage?, text: String?)
+    func btnShareClicked(button: UIButton,photo: UIImage?, text: String?)
 }
 
 class CustomCalloutView: UIView {
@@ -70,7 +70,7 @@ class CustomCalloutView: UIView {
     }
     
     @IBAction func btnShareClicked(_ sender: Any) {
-        delegate?.btnShareClicked(photo: self.mediaImageView.image, text: self.captionTextView.text)
+        delegate?.btnShareClicked(button: self.btnShare, photo: self.mediaImageView.image, text: self.captionTextView.text)
     }
     
 }

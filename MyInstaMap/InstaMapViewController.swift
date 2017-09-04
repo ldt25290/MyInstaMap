@@ -133,13 +133,13 @@ extension InstaMapViewController: CLLocationManagerDelegate {
 
 extension InstaMapViewController: CustomCalloutViewDelegate {
     
-    func btnShareClicked(photo: UIImage?, text: String?) {
+    func btnShareClicked(button: UIButton,photo: UIImage?, text: String?) {
         if let image = photo {
             let activityVC = UIActivityViewController(activityItems: [text ?? "", image], applicationActivities: [])
-            
-            activityVC.popoverPresentationController?.sourceView = self.view
-            activityVC.popoverPresentationController?.sourceRect = self.view.frame
-            
+            //for display on IPAD
+            activityVC.popoverPresentationController?.sourceView = button.superview
+            activityVC.popoverPresentationController?.sourceRect = button.frame
+            activityVC.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up;
             self.present(activityVC, animated: true, completion: nil)
         }
     }
@@ -211,7 +211,6 @@ extension InstaMapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
         //        print("will change ", animated)
-        
         let tempView = mapView.subviews.first!
         let listOfGestures = tempView.gestureRecognizers!
         for recognizer in listOfGestures {
@@ -224,7 +223,6 @@ extension InstaMapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         //        print("did  change ", animated)
-
         if self.regionChangeIsFromUserInteraction {
             fetchAndDisplayMediaAnnotationToMapView()
             self.regionChangeIsFromUserInteraction = false
