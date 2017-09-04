@@ -20,6 +20,7 @@ class InstaMapViewController: BaseViewController {
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation?
     var mediaSearchAnnotions = [MediaSearchAnnotation]()
+    var regionChangeIsFromUserInteraction: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +32,26 @@ class InstaMapViewController: BaseViewController {
         setupMapView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        checkLocationManagerStatus()
+        fetchAndDisplayMediaAnnotationToMapView()
+    }
+    
     private func setupNav() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(backAction))
+    }
+    
+    func setupLocationManager() {
+        locationManager.delegate = self;
+        locationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters;
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    }
+    
+    func setupMapView() {
+        mapView.delegate = self
+        mapView.showsUserLocation = true
+        mapView.userTrackingMode = .follow
     }
     
     @objc private func backAction(){
@@ -45,12 +64,6 @@ class InstaMapViewController: BaseViewController {
                 }
             }
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        checkLocationManagerStatus()
-        fetchAndDisplayMediaAnnotationToMapView()
     }
     
     func fetchAndDisplayMediaAnnotationToMapView() {
@@ -85,17 +98,6 @@ class InstaMapViewController: BaseViewController {
         
     }
     
-    func setupLocationManager() {
-        locationManager.delegate = self;
-        locationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters;
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    }
-    
-    func setupMapView() {
-        mapView.delegate = self
-        mapView.showsUserLocation = true
-        mapView.userTrackingMode = .follow
-    }
     //
     //    func requestLocationAccess() {
     //        let status = CLLocationManager.authorizationStatus()
@@ -144,13 +146,27 @@ extension InstaMapViewController: CLLocationManagerDelegate {
     }
 }
 
+extension InstaMapViewController: CustomCalloutViewDelegate {
+    
+    func btnShareClicked(photo: UIImage?, text: String?) {
+        if let image = photo {
+            let activityVC = UIActivityViewController(activityItems: [text ?? "", image], applicationActivities: [])
+            
+            activityVC.popoverPresentationController?.sourceView = self.view
+            activityVC.popoverPresentationController?.sourceRect = self.view.frame
+            
+            self.present(activityVC, animated: true, completion: nil)
+        }
+    }
+    
+}
+
 extension InstaMapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         if annotation is MKUserLocation {
             return nil
         } else {
-            
             let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "annotationView") ?? CustomMKAnnotationView(annotation: annotation, reuseIdentifier: "annotationView")
             annotationView.image = UIImage(named: "ic_place")
             annotationView.canShowCallout = false
@@ -164,15 +180,21 @@ extension InstaMapViewController: MKMapViewDelegate {
 
         if view.annotation is MKUserLocation
         {
-            // Don't proceed with custom callout
             return
         }
 
         let mediaAnnotation = view.annotation as! MediaSearchAnnotation
         let calloutView = CustomCalloutView(frame: CGRect.init(x: 0, y: 0, width: 300, height: 165))
         calloutView.userNameLabel.text = mediaAnnotation.title ?? ""
-        calloutView.textLabel.text = mediaAnnotation.subtitle ?? ""
+        calloutView.captionTextView.text = mediaAnnotation.subtitle ?? ""
+        calloutView.locationLabel.text = mediaAnnotation.location ?? ""
+        calloutView.delegate = self
+
         
+        if let userAvatarUrl = mediaAnnotation.avatarUrl {
+            let url = NSURL (string: userAvatarUrl)
+            calloutView.userAvartaImageView.af_setImage(withURL: url! as URL)
+        }
         
         //
         //        let button = UIButton(frame: calloutView.starbucksPhone.frame)
@@ -180,10 +202,16 @@ extension InstaMapViewController: MKMapViewDelegate {
         //        calloutView.addSubview(button)
         if let photoUrl = mediaAnnotation.photoUrl {
             let url = NSURL (string: photoUrl)
-            calloutView.imageView.af_setImage(withURL: url! as URL)
+            calloutView.mediaImageView.af_setImage(withURL: url! as URL)
         }
         
-	
+        if  let timeResult = Double(mediaAnnotation.postTime!) {
+            let date = Date(timeIntervalSince1970: TimeInterval(timeResult))
+            calloutView.postTimeLabel.text = date.toStringWithRelativeTime(strings: nil)
+        }
+        
+
+        
         calloutView.center = CGPoint(x: view.bounds.size.width / 2, y: -calloutView.bounds.size.height * 0.52)
         
         view.addSubview(calloutView)
@@ -202,10 +230,23 @@ extension InstaMapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
         //        print("will change ", animated)
+        
+        let tempView = mapView.subviews.first!
+        let listOfGestures = tempView.gestureRecognizers!
+        for recognizer in listOfGestures {
+            if recognizer.state == UIGestureRecognizerState.began || recognizer.state == UIGestureRecognizerState.ended {
+                self.regionChangeIsFromUserInteraction = true
+                break
+            }
+        }
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         //        print("did  change ", animated)
-        fetchAndDisplayMediaAnnotationToMapView();
+
+        if self.regionChangeIsFromUserInteraction {
+            fetchAndDisplayMediaAnnotationToMapView()
+            self.regionChangeIsFromUserInteraction = false
+        }
     }
 }

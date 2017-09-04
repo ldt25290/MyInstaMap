@@ -9,16 +9,24 @@
 import MapKit
 
 @objc class MediaSearchAnnotation: NSObject {
+    var mediaId: String?
     var title: String?
     var subtitle: String?
     var coordinate: CLLocationCoordinate2D
     var photoUrl: String?
+    var avatarUrl: String?
+    var postTime: String?
+    var location: String?
     
-    init(title: String?, subtitle: String?, coordinate: CLLocationCoordinate2D, photoUrl:String?) {
+    init(mediaId: String?, title: String?, subtitle: String?, coordinate: CLLocationCoordinate2D, photoUrl:String?, avatarUrl: String?, postTime: String?, location: String?) {
+        self.mediaId = mediaId
         self.title = title
         self.subtitle = subtitle
         self.coordinate = coordinate
         self.photoUrl = photoUrl
+        self.avatarUrl = avatarUrl
+        self.postTime = postTime
+        self.location = location
     }
     
     static func getPlaces(media:MediaSearchModel) -> [MediaSearchAnnotation] {
@@ -28,12 +36,16 @@ import MapKit
         
         for item in array {
             
-            let title = item.user?.full_name
+            let mediaId = item.mediaDataId
+            let title = item.user?.username
             let subtitle = item.caption?.text
             let latitude = item.location?.latitude ?? 0, longitude = item.location?.longitude ?? 0
-            let photoUrl = item.images?.thumbnail?.url
+            let photoUrl = item.images?.standard_resolution?.url
+            let avatarUrl = item.user?.profile_picture
+            let postTime = item.created_time
+            let location = item.location?.name
             
-            let place = MediaSearchAnnotation(title: title, subtitle: subtitle, coordinate: CLLocationCoordinate2DMake(latitude, longitude), photoUrl: photoUrl)
+            let place = MediaSearchAnnotation(mediaId:mediaId, title: title, subtitle: subtitle, coordinate: CLLocationCoordinate2DMake(latitude, longitude), photoUrl: photoUrl, avatarUrl: avatarUrl, postTime: postTime, location: location)
             places.append(place)
         }
         

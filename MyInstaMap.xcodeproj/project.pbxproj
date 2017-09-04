@@ -28,6 +28,8 @@
 		52528D541F5C902F00A46F5E /* ObjectMapper.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 52528D3A1F5C901800A46F5E /* ObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		525B62D11F5999DA00FAB0B4 /* MediaSearchAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525B62D01F5999DA00FAB0B4 /* MediaSearchAnnotation.swift */; };
 		525B62D31F59C37F00FAB0B4 /* CustomMKAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525B62D21F59C37F00FAB0B4 /* CustomMKAnnotationView.swift */; };
+		5289CBC31F5CEF2D00BC37DE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5289CBC21F5CEF2D00BC37DE /* QuartzCore.framework */; };
+		5289CBDF1F5D182100BC37DE /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5289CBDE1F5D182100BC37DE /* DateExtension.swift */; };
 		52F6CD281F57CC8D0056F02F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F6CD271F57CC8D0056F02F /* LoginViewController.swift */; };
 		CE4CC1711F553B6C00D8244B /* InstaMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4CC1701F553B6C00D8244B /* InstaMapViewController.swift */; };
 		CE4CC1761F553B6C00D8244B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE4CC1751F553B6C00D8244B /* Assets.xcassets */; };
@@ -313,6 +315,8 @@
 		52528D2F1F5C901700A46F5E /* ObjectMapper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = ObjectMapper.xcodeproj; sourceTree = "<group>"; };
 		525B62D01F5999DA00FAB0B4 /* MediaSearchAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaSearchAnnotation.swift; sourceTree = "<group>"; };
 		525B62D21F59C37F00FAB0B4 /* CustomMKAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMKAnnotationView.swift; sourceTree = "<group>"; };
+		5289CBC21F5CEF2D00BC37DE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5289CBDE1F5D182100BC37DE /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		52F6CD271F57CC8D0056F02F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CE4CC16B1F553B6C00D8244B /* MyInstaMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyInstaMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE4CC1701F553B6C00D8244B /* InstaMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstaMapViewController.swift; sourceTree = "<group>"; };
@@ -333,6 +337,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5289CBC31F5CEF2D00BC37DE /* QuartzCore.framework in Frameworks */,
 				52528D471F5C902F00A46F5E /* Alamofire.framework in Frameworks */,
 				52528D4F1F5C902F00A46F5E /* AlamofireObjectMapper.framework in Frameworks */,
 				52528D531F5C902F00A46F5E /* ObjectMapper.framework in Frameworks */,
@@ -401,6 +406,7 @@
 				525283861F5C0CC100A46F5E /* Connectivity.swift */,
 				520F023D1F5B17940048A3FE /* Reachability.swift */,
 				525283891F5C1BC700A46F5E /* Constants.swift */,
+				5289CBDE1F5D182100BC37DE /* DateExtension.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -517,6 +523,14 @@
 			name = "supporting files";
 			sourceTree = "<group>";
 		};
+		5289CBC11F5CEF2D00BC37DE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5289CBC21F5CEF2D00BC37DE /* QuartzCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CE4CC1621F553B6C00D8244B = {
 			isa = PBXGroup;
 			children = (
@@ -525,6 +539,7 @@
 				CE4CC1821F553B6C00D8244B /* MyInstaMapTests */,
 				CE4CC18D1F553B6C00D8244B /* MyInstaMapUITests */,
 				CE4CC16C1F553B6C00D8244B /* Products */,
+				5289CBC11F5CEF2D00BC37DE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -937,6 +952,7 @@
 				5252837C1F5BEA8700A46F5E /* MediaAPI.swift in Sources */,
 				525283601F5BD7CE00A46F5E /* BaseViewController.swift in Sources */,
 				5252838A1F5C1BC700A46F5E /* Constants.swift in Sources */,
+				5289CBDF1F5D182100BC37DE /* DateExtension.swift in Sources */,
 				525283821F5BFFA900A46F5E /* AuthenticateAPI.swift in Sources */,
 				525283871F5C0CC100A46F5E /* Connectivity.swift in Sources */,
 				520F02261F5ADFC30048A3FE /* CustomCalloutView.swift in Sources */,

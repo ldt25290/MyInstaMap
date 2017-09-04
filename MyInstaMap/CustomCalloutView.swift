@@ -8,12 +8,21 @@
 
 import UIKit
 
+protocol CustomCalloutViewDelegate: class {
+    func btnShareClicked(photo: UIImage?, text: String?)
+}
+
 class CustomCalloutView: UIView {
     
     @IBOutlet var contentView: UIView!
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var mediaImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var userAvartaImageView: UIImageView!
+    @IBOutlet weak var postTimeLabel: UILabel!
+    @IBOutlet weak var captionTextView: UITextView!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var btnShare: UIButton!
+    weak var delegate: CustomCalloutViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,6 +35,24 @@ class CustomCalloutView: UIView {
         commonInit()
     }
     
+    func setupCaptionTextView() {
+        self.captionTextView.textContainerInset = UIEdgeInsets.zero;
+        self.captionTextView.textContainer.lineFragmentPadding = 0;
+    }
+    
+    func setupContentView() {
+        self.contentView.layer.cornerRadius = 5;
+        self.contentView.layer.borderWidth = 1.0;
+        self.contentView.layer.borderColor = UIColor.clear.cgColor;
+    }
+    
+    func setupPostPhoto() {
+        self.mediaImageView.layer.cornerRadius = 5;
+        self.mediaImageView.layer.borderWidth = 1.0;
+        self.mediaImageView.layer.borderColor = UIColor.clear.cgColor;
+        self.mediaImageView.layer.masksToBounds = true;
+    }
+    
     private func commonInit() {
         // Load the nib
         Bundle.main.loadNibNamed("CustomCalloutView", owner: self, options: [:])
@@ -33,16 +60,16 @@ class CustomCalloutView: UIView {
         // Add the 'contentView' to self
         addSubview(contentView)
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-        self.imageView.isUserInteractionEnabled = true
-        self.imageView.addGestureRecognizer(tapGestureRecognizer)
+        setupCaptionTextView()
+        
+        setupContentView()
+        
+        setupPostPhoto()
+        
     }
     
-    func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
-    {
-        let tappedImage = tapGestureRecognizer.view as! UIImageView
-        print("imageTapped ", tappedImage)
-        // Your action
+    @IBAction func btnShareClicked(_ sender: Any) {
+        delegate?.btnShareClicked(photo: self.mediaImageView.image, text: self.captionTextView.text)
     }
     
 }
