@@ -24,7 +24,7 @@ class AuthenticateAPI: NSObject {
             return
         }
         
-        Alamofire.request(Constants.LOGOUT_ADDRESS).validate().responseData { (response) in
+        Alamofire.request(Constants.LOGOUT_ADDRESS).responseData { (response) in
             switch response.result {
                 
             case .success:

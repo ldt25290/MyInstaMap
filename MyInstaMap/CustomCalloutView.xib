@@ -78,21 +78,23 @@
                             <rect key="frame" x="0.0" y="127" width="122" height="1"/>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hS4-R4-gaK">
-                            <rect key="frame" x="79" y="129" width="43" height="19"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                            <state key="normal" title="Share"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hS4-R4-gaK">
+                            <rect key="frame" x="68" y="129" width="54" height="19"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="9"/>
+                            <state key="normal" title="  Share" image="icon-share">
+                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
                             <connections>
                                 <action selector="btnShareClicked:" destination="-1" eventType="touchUpInside" id="9IG-5n-RcX"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 hours ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6s-7B-hci">
-                            <rect key="frame" x="0.0" y="129" width="80" height="19"/>
+                            <rect key="frame" x="0.0" y="129" width="68" height="19"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="80" id="nQZ-4j-1VB"/>
+                                <constraint firstAttribute="width" constant="68" id="nQZ-4j-1VB"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                            <nil key="textColor"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
@@ -117,7 +119,7 @@
                         <constraint firstAttribute="trailing" secondItem="hS4-R4-gaK" secondAttribute="trailing" constant="2" id="apt-ov-F70"/>
                         <constraint firstItem="I4k-Ki-ibH" firstAttribute="height" secondItem="SYq-Cl-imO" secondAttribute="height" id="cXl-3F-05V"/>
                         <constraint firstItem="I4k-Ki-ibH" firstAttribute="top" secondItem="0AY-va-B7t" secondAttribute="bottom" constant="2" id="ghd-fd-jde"/>
-                        <constraint firstItem="hS4-R4-gaK" firstAttribute="leading" secondItem="R6s-7B-hci" secondAttribute="trailing" constant="-1" id="hJm-l7-bG8"/>
+                        <constraint firstItem="hS4-R4-gaK" firstAttribute="leading" secondItem="R6s-7B-hci" secondAttribute="trailing" id="hJm-l7-bG8"/>
                         <constraint firstItem="I4k-Ki-ibH" firstAttribute="width" secondItem="SYq-Cl-imO" secondAttribute="width" id="mb1-ZH-l16"/>
                         <constraint firstItem="R6s-7B-hci" firstAttribute="top" secondItem="I4k-Ki-ibH" secondAttribute="bottom" constant="1" id="nhy-fT-ZSp"/>
                         <constraint firstItem="I4k-Ki-ibH" firstAttribute="leading" secondItem="SYq-Cl-imO" secondAttribute="leading" id="pnA-Mi-usm"/>
@@ -142,4 +144,7 @@
             <point key="canvasLocation" x="-193" y="-226.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="icon-share" width="14" height="14"/>
+    </resources>
 </document>

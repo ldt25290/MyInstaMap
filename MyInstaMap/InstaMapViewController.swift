@@ -98,21 +98,6 @@ class InstaMapViewController: BaseViewController {
         
     }
     
-    //
-    //    func requestLocationAccess() {
-    //        let status = CLLocationManager.authorizationStatus()
-    //
-    //        switch status {
-    //        case .authorizedAlways, .authorizedWhenInUse:
-    //            return
-    //        case .denied, .restricted:
-    //            print("location access denied")
-    //            showAlert("Location services were previously denied. Please enable location services for this app in Settings.")
-    //        default:
-    //            locationManager.requestWhenInUseAuthorization()
-    //        }
-    //    }
-    
     func checkLocationManagerStatus() {
         //status is not determined
         if CLLocationManager.authorizationStatus() == .notDetermined {
@@ -196,10 +181,6 @@ extension InstaMapViewController: MKMapViewDelegate {
             calloutView.userAvartaImageView.af_setImage(withURL: url! as URL)
         }
         
-        //
-        //        let button = UIButton(frame: calloutView.starbucksPhone.frame)
-        //        button.addTarget(self, action: #selector(ViewController.callPhoneNumber(sender:)), for: .touchUpInside)
-        //        calloutView.addSubview(button)
         if let photoUrl = mediaAnnotation.photoUrl {
             let url = NSURL (string: photoUrl)
             calloutView.mediaImageView.af_setImage(withURL: url! as URL)

@@ -35,13 +35,17 @@ class BaseViewController: UIViewController {
         switch status {
         case .unreachable:
             print("unreachable")
-            self.showErrorAlertWithTitle("Error", message: Constants.APP_NETWORK_ERROR_MESSAGE)
+            self.showNetworkErrorAlertView()
         case .wifi:
             print("wifi")
         case .wwan:
             print("wwan")
         }
 
+    }
+    
+    func showNetworkErrorAlertView() {
+        self.showErrorAlertWithTitle(Constants.ERROR_MSG_KEY, message: Constants.APP_NETWORK_ERROR_MESSAGE)
     }
     
 }

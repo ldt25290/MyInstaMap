@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Instamap-->
+        <!--My InstaMap-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="InstaMapViewController" id="BYZ-38-t0r" customClass="InstaMapViewController" customModule="MyMapBook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InstaMapViewController" id="BYZ-38-t0r" customClass="InstaMapViewController" customModule="MyInstaMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -33,7 +33,7 @@
                             <constraint firstItem="Rfo-W0-IdI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="voX-A8-C8G"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Instamap" id="EwP-MD-Jqf"/>
+                    <navigationItem key="navigationItem" title="My InstaMap" id="EwP-MD-Jqf"/>
                     <connections>
                         <outlet property="mapView" destination="Rfo-W0-IdI" id="JMx-Td-hSY"/>
                     </connections>
@@ -63,7 +63,7 @@
         <!--Login-->
         <scene sceneID="JeI-Ow-Frg">
             <objects>
-                <viewController id="eJO-Uh-umj" customClass="LoginViewController" customModule="MyMapBook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="eJO-Uh-umj" customClass="LoginViewController" customModule="MyInstaMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pYB-Z3-TLd"/>
                         <viewControllerLayoutGuide type="bottom" id="8kn-6j-Cyb"/>

@@ -41,13 +41,14 @@ class CustomCalloutView: UIView {
     }
     
     func setupContentView() {
-        self.contentView.layer.cornerRadius = 5;
+        self.contentView.layer.cornerRadius = 20;
         self.contentView.layer.borderWidth = 1.0;
         self.contentView.layer.borderColor = UIColor.clear.cgColor;
+        self.contentView.layer.masksToBounds = true;
     }
     
     func setupPostPhoto() {
-        self.mediaImageView.layer.cornerRadius = 5;
+        self.mediaImageView.layer.cornerRadius = 10;
         self.mediaImageView.layer.borderWidth = 1.0;
         self.mediaImageView.layer.borderColor = UIColor.clear.cgColor;
         self.mediaImageView.layer.masksToBounds = true;

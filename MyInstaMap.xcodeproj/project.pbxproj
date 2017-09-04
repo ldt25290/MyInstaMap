@@ -30,6 +30,7 @@
 		525B62D31F59C37F00FAB0B4 /* CustomMKAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525B62D21F59C37F00FAB0B4 /* CustomMKAnnotationView.swift */; };
 		5289CBC31F5CEF2D00BC37DE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5289CBC21F5CEF2D00BC37DE /* QuartzCore.framework */; };
 		5289CBDF1F5D182100BC37DE /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5289CBDE1F5D182100BC37DE /* DateExtension.swift */; };
+		5289CBE11F5D4F7400BC37DE /* ErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5289CBE01F5D4F7400BC37DE /* ErrorExtension.swift */; };
 		52F6CD281F57CC8D0056F02F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F6CD271F57CC8D0056F02F /* LoginViewController.swift */; };
 		CE4CC1711F553B6C00D8244B /* InstaMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4CC1701F553B6C00D8244B /* InstaMapViewController.swift */; };
 		CE4CC1761F553B6C00D8244B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE4CC1751F553B6C00D8244B /* Assets.xcassets */; };
@@ -317,6 +318,7 @@
 		525B62D21F59C37F00FAB0B4 /* CustomMKAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMKAnnotationView.swift; sourceTree = "<group>"; };
 		5289CBC21F5CEF2D00BC37DE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5289CBDE1F5D182100BC37DE /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		5289CBE01F5D4F7400BC37DE /* ErrorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorExtension.swift; sourceTree = "<group>"; };
 		52F6CD271F57CC8D0056F02F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CE4CC16B1F553B6C00D8244B /* MyInstaMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyInstaMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE4CC1701F553B6C00D8244B /* InstaMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstaMapViewController.swift; sourceTree = "<group>"; };
@@ -407,6 +409,7 @@
 				520F023D1F5B17940048A3FE /* Reachability.swift */,
 				525283891F5C1BC700A46F5E /* Constants.swift */,
 				5289CBDE1F5D182100BC37DE /* DateExtension.swift */,
+				5289CBE01F5D4F7400BC37DE /* ErrorExtension.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -948,6 +951,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				525B62D31F59C37F00FAB0B4 /* CustomMKAnnotationView.swift in Sources */,
+				5289CBE11F5D4F7400BC37DE /* ErrorExtension.swift in Sources */,
 				52F6CD281F57CC8D0056F02F /* LoginViewController.swift in Sources */,
 				5252837C1F5BEA8700A46F5E /* MediaAPI.swift in Sources */,
 				525283601F5BD7CE00A46F5E /* BaseViewController.swift in Sources */,

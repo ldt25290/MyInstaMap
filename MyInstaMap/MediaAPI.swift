@@ -22,7 +22,7 @@ final class MediaAPI: NSObject {
         
         let mediaSearchAddress = Constants.API_URL + "/media/search?lat=\(latitude)&lng=\(longtitude)&access_token=\(accessToken)&distance=\(Constants.PARAM_DISTANCE)"
         
-        Alamofire.request(mediaSearchAddress).validate().responseObject { (response:DataResponse<MediaSearchModel>) in
+        Alamofire.request(mediaSearchAddress).responseObject { (response:DataResponse<MediaSearchModel>) in
             
             switch response.result {
             case .success:

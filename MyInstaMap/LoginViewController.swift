@@ -49,7 +49,6 @@ class LoginViewController: BaseViewController {
 extension LoginViewController: UIWebViewDelegate {
     public func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
 
-        
         if (request.url?.host == "localhost") {
             let accessToken = getAccessTokenParameter(url: (request.url?.absoluteString)!, param: "access_token")
             
@@ -70,14 +69,19 @@ extension LoginViewController: UIWebViewDelegate {
     }
     
     public func webViewDidStartLoad(_ webView: UIWebView) {
-        print(webView)
+//        print(webView)
     }
     
     public func webViewDidFinishLoad(_ webView: UIWebView) {
-        print(webView)
+//        print(webView)
     }
     
     public func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+        if (error.code == NSURLErrorNotConnectedToInternet) {
+            self.showNetworkErrorAlertView()
+        } else  if error.code == NSURLErrorTimedOut {
+            self.showErrorAlertWithTitle(Constants.ERROR_MSG_KEY, message: "Request Time Out")
+        }
         print(error)
     }
     
